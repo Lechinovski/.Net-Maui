@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+
 using Contact.service;
-using Microsoft.Maui.Handlers;
 
 namespace Contact
 {
@@ -21,20 +21,12 @@ namespace Contact
                     fonts.AddFont("Outfit-Light.ttf", "OutfitLight");
                 });
 
-            builder.Services.AddSingleton<RandomUserService, UsersService>();
+            builder.Services.AddSingleton<RandomUserService,UsersService>();
             builder.Services.AddTransient<MainPage>();
 
 #if DEBUG
-            builder.Logging.AddDebug();
+    		builder.Logging.AddDebug();
 #endif
-
-            // Add the EntryHandler.Mapper code here
-            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
-            {
-#if ANDROID
-                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
-#endif
-            });
 
             return builder.Build();
         }

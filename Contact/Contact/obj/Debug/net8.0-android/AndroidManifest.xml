@@ -7,6 +7,14 @@
     -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" package="com.companyname.contact" android:versionName="1.0">
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="34" />
+  <uses-permission android:maxSdkVersion="32" android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+  <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+  <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:maxSdkVersion="32" android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-feature android:name="android.hardware.camera" android:required="true" />
+  <uses-feature android:name="android.hardware.camera.autofocus" android:required="true" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
   <application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true" android:name="crc646759812fe53ff9af.MainApplication" android:label="Contact" android:debuggable="true" android:extractNativeLibs="true">
