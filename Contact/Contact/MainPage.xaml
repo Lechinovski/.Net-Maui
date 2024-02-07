@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Contact.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <!--  Página Principal  -->
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="0,0,0,0"
+            Spacing="25"
+            VerticalOptions="Start">
+
+
+            <StackLayout Padding="20" Orientation="Horizontal">
+
+                <!--  Botão de Adicionar Contatos  -->
+                <ImageButton
+                    Background="Transparent"
+                    Clicked="AddContactPageButton"
+                    HeightRequest="30"
+                    WidthRequest="30">
+                    <ImageButton.Source>
+                        <FontImageSource
+                            FontFamily="Icons"
+                            Glyph="&#xE99C;"
+                            Size="20"
+                            Color="White" />
+                    </ImageButton.Source>
+                </ImageButton>
+
+                <Button
+                    Padding="10,0,0,0"
+                    Background="Transparent"
+                    Clicked="AddContactPageButton"
+                    Text="Adicionar Contatos"
+                    TextColor="White" />
+
+                <!--  Botão de RefreshContact  -->
+                <ImageButton
+                    Background="Transparent"
+                    Clicked="OnCounterClicked"
+                    HeightRequest="30"
+                    HorizontalOptions="EndAndExpand"
+                    WidthRequest="30">
+                    <ImageButton.Source>
+                        <FontImageSource
+                            FontFamily="Icons"
+                            Glyph="&#xE867;"
+                            Color="White" />
+                    </ImageButton.Source>
+                </ImageButton>
+
+            </StackLayout>
+
+            <!--  Carregamento ao pressionar o botão de RefreshContact  -->
+            <ActivityIndicator
+                x:Name="loading"
+                HeightRequest="30"
+                IsRunning="True"
+                IsVisible="false"
+                Color="#e5b238" />
+
+            <!--  Lista de contatos  -->
+            <ListView
+                x:Name="listViewUsers"
+                HasUnevenRows="True"
+                ItemSelected="ContactDetails"
+                SeparatorVisibility="None"
+                VerticalScrollBarVisibility="Never">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Frame
+                                    Padding="10,20,10,20"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Transparent">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame
+                                            BackgroundColor="Transparent"
+                                            CornerRadius="50"
+                                            HeightRequest="50"
+                                            WidthRequest="50">
+
+                                            <!--  Imagem do contato  -->
+                                            <Image
+                                                HeightRequest="50"
+                                                Source="{Binding picture.large}"
+                                                WidthRequest="50" />
+                                        </Frame>
+
+                                        <!--  Nome do contato  -->
+                                        <Label
+                                            Margin="10,0,0,0"
+                                            FontFamily="OutfitLight"
+                                            FontSize="20"
+                                            Text="{Binding name.first}"
+                                            TextColor="White"
+                                            VerticalTextAlignment="Center" />
+
+                                        <!--  Botão de deletar o contato  -->
+
+                                        <ImageButton
+                                            Clicked="EditContactButton"
+                                            HeightRequest="30"
+                                            HorizontalOptions="EndAndExpand">
+                                            <ImageButton.Source>
+                                                <FontImageSource
+                                                    FontFamily="Icons"
+                                                    Glyph="&#xE832;"
+                                                    Color="White" />
+                                            </ImageButton.Source>
+                                        </ImageButton>
+
+                                        <ImageButton Clicked="DeleteButton_Clicked" HeightRequest="30">
+                                            <ImageButton.Source>
+                                                <FontImageSource
+                                                    FontFamily="Icons"
+                                                    Glyph="&#xE99F;"
+                                                    Color="White" />
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

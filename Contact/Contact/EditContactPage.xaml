@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Contact.EditContactPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <!--  Página de Detalhe dos Contatos  -->
+    <VerticalStackLayout>
+        <StackLayout Orientation="Vertical">
+            <!--  Imagem do contato selecionado  -->
+            <Frame
+                CornerRadius="125"
+                HeightRequest="128"
+                WidthRequest="128">
+                <Image
+                    x:Name="detailsImage"
+                    HeightRequest="128"
+                    WidthRequest="128" />
+            </Frame>
+
+            <StackLayout
+                Margin="0,10,0,10"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <!--  Nome do contato selecionado  -->
+
+                <Entry
+                    x:Name="detailsName"
+                    FontFamily="Outfit-Regular.ttf"
+                    FontSize="Large"
+                    Text="" />
+            </StackLayout>
+
+            <HorizontalStackLayout Margin="0,10,0,10" HorizontalOptions="Center">
+                <Frame
+                    Margin="0,0,10,0"
+                    BackgroundColor="#0b2351"
+                    CornerRadius="30"
+                    HeightRequest="50"
+                    WidthRequest="50">
+                    <ImageButton HeightRequest="30" WidthRequest="30">
+                        <ImageButton.Source>
+                            <FontImageSource
+                                FontFamily="Icons"
+                                Glyph="&#xE83F;"
+                                Size="100"
+                                Color="White" />
+                        </ImageButton.Source>
+                    </ImageButton>
+
+                </Frame>
+                <Frame
+                    Margin="10,0,0,0"
+                    BackgroundColor="#0b2351"
+                    CornerRadius="30"
+                    HeightRequest="50"
+                    WidthRequest="50">
+                    <ImageButton HeightRequest="30" WidthRequest="30">
+                        <ImageButton.Source>
+                            <FontImageSource
+                                FontFamily="Icons"
+                                Glyph="&#xE9E8;"
+                                Size="100"
+                                Color="White" />
+
+                        </ImageButton.Source>
+                    </ImageButton>
+
+                </Frame>
+
+            </HorizontalStackLayout>
+
+            <Frame Margin="25,10,25,10" BackgroundColor="#0b2351">
+
+                <StackLayout>
+                    <Label
+                        Margin="0,0,0,10"
+                        FontAttributes="Bold"
+                        FontFamily="Outfit-Regular.ttf"
+                        FontSize="Medium"
+                        Text="Dados do Contato"
+                        TextColor="White" />
+
+                    <StackLayout Margin="0,10,0,10" Orientation="Horizontal">
+
+                        <ImageButton HeightRequest="20" WidthRequest="20">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="Icons"
+                                    Glyph="&#xF2B6;"
+                                    Size="100"
+                                    Color="White" />
+                            </ImageButton.Source>
+                        </ImageButton>
+
+
+                        <Entry
+                            x:Name="detailsEmail"
+                            Margin="10,0,0,0"
+                            FontFamily="Outfit-Regular.ttf"
+                            FontSize="Small"
+                            Text="" />
+
+                    </StackLayout>
+
+                    <StackLayout Margin="0,10,0,10" Orientation="Horizontal">
+                        <ImageButton HeightRequest="30" WidthRequest="30">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="Icons"
+                                    Glyph="&#xE83F;"
+                                    Size="100"
+                                    Color="White" />
+                            </ImageButton.Source>
+                        </ImageButton>
+
+                        <Entry
+                            x:Name="detailsPhone"
+                            Margin="10,0,0,0"
+                            FontFamily="Outfit-Regular.ttf"
+                            FontSize="Small"
+                            Keyboard="Telephone"
+                            Text="" />
+
+                    </StackLayout>
+
+                    <StackLayout Margin="0,10,0,10" Orientation="Horizontal">
+
+                        <ImageButton HeightRequest="30" WidthRequest="30">
+                            <ImageButton.Source>
+                                <FontImageSource
+                                    FontFamily="Icons"
+                                    Glyph="&#xE83F;"
+                                    Size="100"
+                                    Color="White" />
+                            </ImageButton.Source>
+                        </ImageButton>
+
+
+                        <Entry
+                            x:Name="detailsCell"
+                            Margin="10,0,0,0"
+                            FontFamily="Outfit-Regular.ttf"
+                            FontSize="Small"
+                            Keyboard="Telephone"
+                            Text="" />
+
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame>
+
+            <Button
+                BackgroundColor="#0b2351"
+                Text="Salvar"
+                TextColor="White"
+                WidthRequest="340" />
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>
