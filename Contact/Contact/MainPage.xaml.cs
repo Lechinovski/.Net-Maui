@@ -1,23 +1,24 @@
 ﻿using Contact.service;
 using Contact.Modelo;
 using System.Collections.ObjectModel;
+using System.Text.Json;
+using System.IO;
 
 
 namespace Contact
 {
     public partial class MainPage : ContentPage
     {
-
+        private readonly string _cachePath = Path.Combine(FileSystem.Current.CacheDirectory, "contacts.json");
         private readonly RandomUserService _usersService;
-
-        private AddContact _addContact { get; set; }
 
         public MainPage(RandomUserService service)
         {
             InitializeComponent();
-            _usersService = service;
 
-            
+            LoadData();
+
+            _usersService = service;
         }
 
 
@@ -27,6 +28,7 @@ namespace Contact
 
             var data = await _usersService.Obter();
             listViewUsers.ItemsSource = data;
+            await SaveDataAsync();
 
             loading.IsVisible = false;
         }
@@ -42,7 +44,7 @@ namespace Contact
             ((ListView)sender).SelectedItem = null;
         }
 
-        private void DeleteButton_Clicked(object sender, EventArgs e)
+        private async void DeleteButton_Clicked(object sender, EventArgs e)
         {
             var button = (ImageButton)sender;
             var selectedUser = (RandomUser)button.BindingContext;
@@ -52,34 +54,71 @@ namespace Contact
 
             listViewUsers.ItemsSource = null;
             listViewUsers.ItemsSource = data;
+
+            await SaveDataAsync();
         }
 
-        private void AddContact(object? sender, RandomUser newContact)
+        private async void AddContact(object? sender, RandomUser newContact)
         {
             var data = (List<RandomUser>)listViewUsers.ItemsSource;
             data.Add(newContact);
             listViewUsers.ItemsSource = null;
             listViewUsers.ItemsSource = data;
 
-            Navigation.PopAsync().GetAwaiter();
+            await SaveDataAsync();
+
+            await Navigation.PopAsync();
         }
 
         public void AddContactPageButton(object sender, EventArgs e)
         {
-            _addContact = new();
-            _addContact.ContactAdded += AddContact;
-            Navigation.PushAsync(_addContact);
+            var addContact = new AddContact();
+            addContact.ContactAdded += AddContact;
+            Navigation.PushAsync(addContact);
         }
 
         private void EditContactButton(object sender, EventArgs e)
         {
             var button = (ImageButton)sender;
             var selectedUser = (RandomUser)button.BindingContext;
-         
+
             var data = (List<RandomUser>)listViewUsers.ItemsSource;
 
-            Navigation.PushAsync(new EditContactPage(selectedUser));
+            var index = data.FindIndex(x => x == selectedUser);
 
+            var editContact = new EditContactPage(selectedUser, index);
+            editContact.ContactEdited += EditContact;
+
+            Navigation.PushAsync(editContact);
+
+        }
+
+        private async void EditContact(object? sender, (RandomUser contact, int index) args)
+        {
+            var data = (List<RandomUser>)listViewUsers.ItemsSource;
+            data[args.index] = args.contact;
+
+            listViewUsers.ItemsSource = null;
+            listViewUsers.ItemsSource = data;
+
+            await SaveDataAsync();
+
+            await Navigation.PopAsync();
+        }
+
+        private void LoadData()
+        {
+            if (!File.Exists(_cachePath))
+                return;
+
+            using var fs = File.OpenRead(_cachePath);
+            listViewUsers.ItemsSource = JsonSerializer.Deserialize<List<RandomUser>>(fs);
+        }
+
+        private async Task SaveDataAsync()
+        {
+            await using var fs = File.Create(_cachePath);
+            await JsonSerializer.SerializeAsync(fs, (List<RandomUser>)listViewUsers.ItemsSource);
         }
 
     }

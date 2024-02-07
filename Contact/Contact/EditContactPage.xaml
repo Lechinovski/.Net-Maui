@@ -12,7 +12,7 @@
                 HeightRequest="128"
                 WidthRequest="128">
                 <Image
-                    x:Name="detailsImage"
+                    x:Name="ImageEntry"
                     HeightRequest="128"
                     WidthRequest="128" />
             </Frame>
@@ -24,7 +24,7 @@
                 <!--  Nome do contato selecionado  -->
 
                 <Entry
-                    x:Name="detailsName"
+                    x:Name="NameEntry"
                     FontFamily="Outfit-Regular.ttf"
                     FontSize="Large"
                     Text="" />
@@ -94,7 +94,7 @@
 
 
                         <Entry
-                            x:Name="detailsEmail"
+                            x:Name="EmailEntry"
                             Margin="10,0,0,0"
                             FontFamily="Outfit-Regular.ttf"
                             FontSize="Small"
@@ -114,7 +114,7 @@
                         </ImageButton>
 
                         <Entry
-                            x:Name="detailsPhone"
+                            x:Name="PhoneEntry"
                             Margin="10,0,0,0"
                             FontFamily="Outfit-Regular.ttf"
                             FontSize="Small"
@@ -137,7 +137,7 @@
 
 
                         <Entry
-                            x:Name="detailsCell"
+                            x:Name="CellEntry"
                             Margin="10,0,0,0"
                             FontFamily="Outfit-Regular.ttf"
                             FontSize="Small"
@@ -152,6 +152,7 @@
             <Button
                 BackgroundColor="#0b2351"
                 Text="Salvar"
+                Clicked="EditContact_Button"
                 TextColor="White"
                 WidthRequest="340" />
         </StackLayout>
