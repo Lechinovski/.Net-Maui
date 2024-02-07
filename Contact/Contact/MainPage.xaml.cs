@@ -21,13 +21,19 @@ namespace Contact
             _usersService = service;
         }
 
+        private List<RandomUser> GetList()
+        {
+            var data = (List<RandomUser>)listViewUsers.ItemsSource;
+            return data.OrderBy(x => x.name.first).ToList();
+        }
+
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
             loading.IsVisible = true;
 
             var data = await _usersService.Obter();
-            listViewUsers.ItemsSource = data;
+            listViewUsers.ItemsSource = data.OrderBy(x => x.name.first).ToList();
             await SaveDataAsync();
 
             loading.IsVisible = false;
@@ -49,7 +55,9 @@ namespace Contact
             var button = (ImageButton)sender;
             var selectedUser = (RandomUser)button.BindingContext;
 
-            var data = (List<RandomUser>)listViewUsers.ItemsSource;
+            //var data = (List<RandomUser>)listViewUsers.ItemsSource;
+            //data = data.OrderBy(x => x.name.first).ToList();
+            var data = GetList();
             data.Remove(selectedUser);
 
             listViewUsers.ItemsSource = null;
@@ -60,8 +68,10 @@ namespace Contact
 
         private async void AddContact(object? sender, RandomUser newContact)
         {
-            var data = (List<RandomUser>)listViewUsers.ItemsSource;
-            data.Add(newContact);
+            //var data = (List<RandomUser>)listViewUsers.ItemsSource;
+            var data = GetList();
+
+            data.Insert(0, newContact);
             listViewUsers.ItemsSource = null;
             listViewUsers.ItemsSource = data;
 
@@ -95,7 +105,8 @@ namespace Contact
 
         private async void EditContact(object? sender, (RandomUser contact, int index) args)
         {
-            var data = (List<RandomUser>)listViewUsers.ItemsSource;
+            // var data = (List<RandomUser>)listViewUsers.ItemsSource;
+            var data = GetList();
             data[args.index] = args.contact;
 
             listViewUsers.ItemsSource = null;
