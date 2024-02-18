@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SportsDB.MainPage">
+
+    <!--  Página Principal  -->
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontFamily" Value="OutfitLight" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        <Style TargetType="ActivityIndicator">
+            <Setter Property="Color" Value="#e5b238" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+            <ActivityIndicator x:Name="loading" HeightRequest="30" IsRunning="True" IsVisible="false" />
+
+            <ListView
+                x:Name="listViewPaises"
+                HasUnevenRows="True"
+                ItemSelected="DetailsPais"
+                SeparatorVisibility="None"
+                VerticalScrollBarVisibility="Never">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Frame
+                                    Padding="10"
+                                    BackgroundColor="Gray"
+                                    CornerRadius="10"
+                                    HasShadow="True">
+                                    <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
+
+                                        <!--  Imagem do Pais  -->
+                                        <Image
+                                            HeightRequest="50"
+                                            Source="{Binding country_logo}"
+                                            WidthRequest="50" />
+
+
+                                        <!--  Nome do Pais  -->
+                                        <Label
+                                            Margin="10,0,0,0"
+                                            FontFamily="OutfitLight"
+                                            FontSize="20"
+                                            Text="{Binding country_name}"
+                                            TextColor="Black"
+                                            VerticalTextAlignment="Center" />
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
