@@ -20,7 +20,7 @@ namespace SportsDB
 
             builder.Services.AddSingleton<ApiFootballService,FootballService>();
             builder.Services.AddTransient<MainPage>();
-            builder.Services.AddSingleton<SecondApiFootballService,SecondFootballService>();
+            builder.Services.AddSingleton<LeaguesApiFootballService,LeaguesFootballService>();
             builder.Services.AddTransient<PaisDetails>();
 
 #if DEBUG

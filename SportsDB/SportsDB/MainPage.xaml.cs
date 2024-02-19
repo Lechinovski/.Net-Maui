@@ -31,7 +31,7 @@ namespace SportsDB
             if (selectedCountry != null)
             {
                 var countryId = selectedCountry.country_id;
-                var secondFootballService = new SecondFootballService(); // Instancia o serviço da segunda API
+                var secondFootballService = new LeaguesFootballService(); // Instancia o serviço da segunda API
                 await Navigation.PushAsync(new PaisDetails(secondFootballService, countryId)); // Passa o serviço e o country_id como parâmetros
             }
         }

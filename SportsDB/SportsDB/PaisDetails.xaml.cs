@@ -3,10 +3,10 @@ namespace SportsDB;
 
 public partial class PaisDetails : ContentPage
 {
-    private readonly SecondFootballService _secondFootballService;
+    private readonly LeaguesFootballService _secondFootballService;
     private string _country_id;
 
-    public PaisDetails(SecondFootballService service, string country_id)
+    public PaisDetails(LeaguesFootballService service, string country_id)
     {
         InitializeComponent();
         _secondFootballService = service;
