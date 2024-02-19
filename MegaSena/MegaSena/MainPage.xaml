@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MegaSena.MainPage">
+
+    <ScrollView  >
+        <VerticalStackLayout VerticalOptions="CenterAndExpand">
+
+            <Image Source="logo_mega_sena.png" WidthRequest="200" HeightRequest="115"/>
+
+            <Label x:Name="Gerar" Text="Números para Mega Sena" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20, 0, 120"/>
+
+            <VerticalStackLayout x:Name="Gerado"  IsVisible="false">
+
+                <Label Text="O Número para a Mega Sena são:" HorizontalOptions="Center" Margin="0, 20, 0, 0"/>
+
+                <HorizontalStackLayout Spacing="5" HorizontalOptions="Center" Margin="0, 70">
+
+                    <Border Stroke="#00AB37" Padding="10, 5" StrokeShape="RoundRectangle 10, 10, 10, 10">
+
+                        <Label x:Name="Num01" Text="" TextColor="#00AB37" FontSize="24"/>
+
+                    </Border>
+
+                    <Border Stroke="#00AB37" Padding="10, 5" StrokeShape="RoundRectangle 10, 10, 10, 10">
+
+                        <Label x:Name="Num02" Text="" TextColor="#00AB37" FontSize="24"/>
+
+                    </Border>
+
+                    <Border Stroke="#00AB37" Padding="10, 5" StrokeShape="RoundRectangle 10, 10, 10, 10">
+
+                        <Label x:Name="Num03" Text="" TextColor="#00AB37" FontSize="24"/>
+
+                    </Border>
+
+                    <Border Stroke="#00AB37" Padding="10, 5" StrokeShape="RoundRectangle 10, 10, 10, 10">
+
+                        <Label x:Name="Num04" Text="" TextColor="#00AB37" FontSize="24"/>
+
+                    </Border>
+
+                    <Border Stroke="#00AB37" Padding="10, 5" StrokeShape="RoundRectangle 10, 10, 10, 10">
+
+                        <Label x:Name="Num05" Text="" TextColor="#00AB37" FontSize="24"/>
+
+                    </Border>
+
+                    <Border Stroke="#00AB37" Padding="10, 5" StrokeShape="RoundRectangle 10, 10, 10, 10">
+
+                        <Label x:Name="Num06" Text="" TextColor="#00AB37" FontSize="24"/>
+
+                    </Border>
+
+                </HorizontalStackLayout>
+
+                <Label Text="Boa Sorte!" HorizontalOptions="Center" Margin="0, 0, 0, 50"/>
+
+            </VerticalStackLayout>
+
+            <Button Text="Gerar Números para Mega Sena" TextColor="White" HorizontalOptions="Center" Clicked="OnGerarNumbers"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
