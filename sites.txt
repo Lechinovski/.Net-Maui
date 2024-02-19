@@ -1,0 +1,9 @@
+https://www.udemy.com
+https://dotnet.microsoft.com/pt-br/learn
+https://learn.microsoft.com/pt-br/dotnet/maui/platform-integration/communication/contacts?view=net-maui-8.0&tabs=windows
+https://randomuser.me/
+https://learn.microsoft.com/pt-br/dotnet/maui/?view=net-maui-8.0
+https://fontello.com/
+https://icons8.com/
+https://macoratti.net/
+https://www.syncfusion.com/tutorial-videos/maui/datagrid
