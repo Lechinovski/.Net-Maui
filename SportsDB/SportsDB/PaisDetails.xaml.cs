@@ -1,3 +1,4 @@
+using SportsDB.Models;
 using SportsDB.Service;
 namespace SportsDB;
 
@@ -22,5 +23,17 @@ public partial class PaisDetails : ContentPage
         listViewPaises.ItemsSource = data;
 
         loading.IsVisible = false;
+    }
+
+    private async void LeaguesDetails(object sender, SelectedItemChangedEventArgs e)
+    {
+        var selectedDivision = e.SelectedItem as LeaguesApiFootball;
+        if (selectedDivision != null)
+        {
+            var leaguesId = selectedDivision.league_id;
+            var teamsFootballService = new TeamsFootballService();
+            await Navigation.PushAsync(new LeaguesDetails(teamsFootballService, leaguesId));
+        }
+
     }
 }

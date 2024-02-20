@@ -22,9 +22,11 @@ namespace SportsDB
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddSingleton<LeaguesApiFootballService,LeaguesFootballService>();
             builder.Services.AddTransient<PaisDetails>();
+            builder.Services.AddSingleton<TeamsApiFootballService,TeamsFootballService>();
+            builder.Services.AddTransient<LeaguesDetails>();
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

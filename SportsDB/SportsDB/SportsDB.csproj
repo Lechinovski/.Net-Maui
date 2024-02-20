@@ -67,6 +67,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="LeaguesDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PaisDetails.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

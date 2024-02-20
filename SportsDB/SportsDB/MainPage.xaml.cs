@@ -25,14 +25,14 @@ namespace SportsDB
             loading.IsVisible = false;
         }
 
-        private async void DetailsPais(object sender, SelectedItemChangedEventArgs e)
+        private async void PaisDetails(object sender, SelectedItemChangedEventArgs e)
         {
             var selectedCountry = e.SelectedItem as ApiFootball;
             if (selectedCountry != null)
             {
                 var countryId = selectedCountry.country_id;
-                var secondFootballService = new LeaguesFootballService(); // Instancia o serviço da segunda API
-                await Navigation.PushAsync(new PaisDetails(secondFootballService, countryId)); // Passa o serviço e o country_id como parâmetros
+                var secondFootballService = new LeaguesFootballService();
+                await Navigation.PushAsync(new PaisDetails(secondFootballService, countryId));
             }
         }
 

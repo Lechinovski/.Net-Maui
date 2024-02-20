@@ -21,6 +21,7 @@
             <ListView
                 x:Name="listViewPaises"
                 HasUnevenRows="True"
+                ItemSelected="LeaguesDetails"
                 SeparatorVisibility="None"
                 VerticalScrollBarVisibility="Never">
                 <ListView.ItemTemplate>
@@ -29,7 +30,7 @@
                             <Grid Padding="10">
                                 <Frame
                                     Padding="10"
-                                    BackgroundColor="White"
+                                    BackgroundColor="Gray"
                                     CornerRadius="10"
                                     HasShadow="True">
                                     <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">

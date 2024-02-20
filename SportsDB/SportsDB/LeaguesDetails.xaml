@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SportsDB.MainPage">
+             x:Class="SportsDB.LeaguesDetails">
 
-    <!--  Página Principal  -->
+
     <ContentPage.Resources>
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="White" />
@@ -20,9 +20,8 @@
             <ActivityIndicator x:Name="loading" HeightRequest="30" IsRunning="True" IsVisible="false" />
 
             <ListView
-                x:Name="listViewPaises"
+                x:Name="listViewLeagues"
                 HasUnevenRows="True"
-                ItemSelected="PaisDetails"
                 SeparatorVisibility="None"
                 VerticalScrollBarVisibility="Never">
                 <ListView.ItemTemplate>
@@ -36,19 +35,19 @@
                                     HasShadow="True">
                                     <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
 
-                                        <!--  Imagem do Pais  -->
+                                        <!--  Imagem do Time  -->
                                         <Image
                                             HeightRequest="50"
-                                            Source="{Binding country_logo}"
+                                            Source="{Binding team_badge}"
                                             WidthRequest="50" />
 
 
-                                        <!--  Nome do Pais  -->
+                                        <!--  Nome do Time  -->
                                         <Label
                                             Margin="10,0,0,0"
                                             FontFamily="OutfitLight"
                                             FontSize="20"
-                                            Text="{Binding country_name}"
+                                            Text="{Binding team_name}"
                                             TextColor="Black"
                                             VerticalTextAlignment="Center" />
                                     </StackLayout>
@@ -61,4 +60,5 @@
 
         </VerticalStackLayout>
     </ScrollView>
+
 </ContentPage>
